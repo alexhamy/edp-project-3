@@ -35,7 +35,7 @@ const Home = () => {
       console.log(result);
 
       if (response.ok) {
-        alert("Data submitted successfully!");
+        alert(result.prediction ? "Is resistance" : "Is empire");
       } else {
         alert("Error: " + result.error);
       }
@@ -45,32 +45,36 @@ const Home = () => {
   };
 
   return (
-    <div className="container">
-      <h2 className="heading">User Info</h2>
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="formGroup">
-          <label className="label">Homeworld:</label>
-          <input
-            type="text"
-            name="homeworld"
-            className="input"
-            value={homeworld}
-            onChange={handleHomeworldChange}
-          />
-        </div>
-        <div className="formGroup">
-          <label className="label">Unit Type:</label>
-          <input
-            type="text"
-            name="unitType"
-            className="input"
-            value={unitType}
-            onChange={handleUnitTypeChange}
-          />
-        </div>
-        <input type="submit" value="Submit" className="submitButton" />
-      </form>
-    </div>
+    <>
+      <div className="container">
+        <h2 className="heading">User Info</h2>
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="formGroup">
+            <label className="label">Homeworld:</label>
+            <input
+              type="text"
+              name="homeworld"
+              className="input"
+              value={homeworld}
+              onChange={handleHomeworldChange}
+            />
+          </div>
+          <div className="formGroup">
+            <label className="label">Unit Type:</label>
+            <input
+              type="text"
+              name="unitType"
+              className="input"
+              value={unitType}
+              onChange={handleUnitTypeChange}
+            />
+          </div>
+          <input type="submit" value="Submit" className="submitButton" />
+        </form>
+      </div>
+      <h2>Feature Importance</h2>
+      <img src="../public/feature_importance.png" alt="" />
+    </>
   );
 };
 
